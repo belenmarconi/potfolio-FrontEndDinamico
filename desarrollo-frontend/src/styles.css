@@ -1,4 +1,10 @@
-h1 {color: purple; text-decoration: underline;font-family: 'Bebas Neue', cursive;}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope&display=swap");
+
+h1 { color: purple; text-decoration: underline;font-family: 'Bebas Neue', cursive;}
 
 h2 {font-family: 'Secular One', sans-serif;}
 
