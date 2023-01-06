@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginVentanaComponent } from '../login-ventana/login-ventana.component';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
   llamaVentana(){
-    alert('hola');
-  }
+          const modal = this.modalService.open(LoginVentanaComponent);
+      modal.result.then(
+        this.handleModalTodoFormClose.bind(this),
+         this.handleModalTodoFormClose.bind(this));
+    }
+
+    handleModalTodoFormClose(){
+
+    }
 
 }

@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+h1 {color: purple; text-decoration: underline;font-family: 'Bebas Neue', cursive;}
+
+h2 {font-family: 'Secular One', sans-serif;}
+
+p {font-family: 'Manrope', sans-serif;}
+
+.linea-izquierda{
+border-left: thick solid purple;
+height:100%;
+position: relative;
+}
+
+ .linea-abajo {
+border-bottom: thick solid purple;
+width: 50%;
+position: relative;
+}
+
+.linea-derecha{
+border-right: thick solid purple;
+height:100%;
+position: relative;
+}
+
+.linea-perfil {
+border-bottom: thick solid purple;
+width: 100%;
+position: relative;
+}
