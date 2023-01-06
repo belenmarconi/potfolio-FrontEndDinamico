@@ -16,6 +16,11 @@ import { AcercadeImagenComponent } from './componentes/acercade-imagen/acercade-
 import { HeaderLogoapComponent } from './componentes/header-logoap/header-logoap.component';
 import { HeaderBannerComponent } from './componentes/header-banner/header-banner.component';
 import { HeaderRedesComponent } from './componentes/header-redes/header-redes.component';
+import { ExperienciaLaboralComponent } from './componentes/experiencia-laboral/experiencia-laboral.component';
+import { ExplabHistorialComponent } from './componentes/explab-historial/explab-historial.component';
+import { EducacionComponent } from './componentes/educacion/educacion.component';
+import { EducacionHistorialComponent } from './componentes/educacion-historial/educacion-historial.component';
+import { SkillsComponent } from './componentes/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { HeaderRedesComponent } from './componentes/header-redes/header-redes.co
     AcercadeImagenComponent,
     HeaderLogoapComponent,
     HeaderBannerComponent,
-    HeaderRedesComponent
+    HeaderRedesComponent,
+    ExperienciaLaboralComponent,
+    ExplabHistorialComponent,
+    EducacionComponent,
+    EducacionHistorialComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,

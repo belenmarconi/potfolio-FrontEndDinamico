@@ -6,9 +6,11 @@
 
 h1 { color: purple; text-decoration: underline;font-family: 'Bebas Neue', cursive;}
 
-h2 {font-family: 'Secular One', sans-serif;}
+h2 {font-family: 'Secular One', sans-serif;
+font-size: 20px;}
 
-p {font-family: 'Manrope', sans-serif;}
+p {font-family: 'Manrope', sans-serif;
+font-size: 30px;}
 
 .linea-izquierda{
 border-left: thick solid purple;
