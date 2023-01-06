@@ -7,20 +7,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
-import { LogoapComponent } from './componentes/logoap/logoap.component';
+
 import { LoginComponent } from './componentes/login/login.component';
-import { BannerComponent } from './componentes/banner/banner.component';
+
 import { LoginVentanaComponent } from './componentes/login-ventana/login-ventana.component';
+import { AcercadeTextoComponent } from './componentes/acercade-texto/acercade-texto.component';
+import { AcercadeImagenComponent } from './componentes/acercade-imagen/acercade-imagen.component';
+import { HeaderLogoapComponent } from './componentes/header-logoap/header-logoap.component';
+import { HeaderBannerComponent } from './componentes/header-banner/header-banner.component';
+import { HeaderRedesComponent } from './componentes/header-redes/header-redes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AcercaDeComponent,
-    LogoapComponent,
+
     LoginComponent,
-    BannerComponent,
-    LoginVentanaComponent
+
+    LoginVentanaComponent,
+    AcercadeTextoComponent,
+    AcercadeImagenComponent,
+    HeaderLogoapComponent,
+    HeaderBannerComponent,
+    HeaderRedesComponent
   ],
   imports: [
     BrowserModule,

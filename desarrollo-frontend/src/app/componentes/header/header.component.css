@@ -1,0 +1,10 @@
+nav{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  background: aliceblue;
+  font-family: sans-serif;
+  position:fixed;
+  top:0;
+  width:100%;
+  }

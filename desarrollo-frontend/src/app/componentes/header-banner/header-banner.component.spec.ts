@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogoapComponent } from './logoap.component';
+import { HeaderBannerComponent } from './header-banner.component';
 
-describe('LogoapComponent', () => {
-  let component: LogoapComponent;
-  let fixture: ComponentFixture<LogoapComponent>;
+describe('HeaderBannerComponent', () => {
+  let component: HeaderBannerComponent;
+  let fixture: ComponentFixture<HeaderBannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoapComponent ]
+      declarations: [ HeaderBannerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LogoapComponent);
+    fixture = TestBed.createComponent(HeaderBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
