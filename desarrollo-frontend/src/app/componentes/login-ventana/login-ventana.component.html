@@ -3,22 +3,22 @@
                 <h1 class="modal-title">Accede a tu cuenta</h1>
           </div>
           <div class="modal-body">
-              <form>
+              <form #FormularioLogin="ngForm" (ngSubmit)="login(FormularioLogin)">
                   <!-- INGRESO USUARIO -->
                   <div class="form-outline mb-4">
-                    <input  id="Usuario" class="form-control" />
+                    <input  class="form-control" name="email" type="email" placeholder="Introduzca email" ngModel />
                     <label class="form-label" for="Usuario">Usuario</label>
                   </div>
 
                   <!-- INGRESO PASSWORD -->
                   <div class="form-outline mb-4">
-                    <input  id="Password" class="form-control" />
+                    <input  class="form-control" name="password" type="password" placeholder="Introduzca contraseña" ngModel />
                     <label class="form-label" for="Password">Contraseña</label>
                   </div>
 
 
                   <!-- BOTON INICIO DE SESION -->
-                  <button type="button" class="btn btn-primary btn-block mb-4" style="background:purple">
+                  <button type="submit" class="btn btn-primary btn-block mb-4" style="background:purple" >
                       Iniciar sesión</button>
 
                 </form>

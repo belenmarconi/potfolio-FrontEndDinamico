@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -21,6 +23,15 @@ import { ExplabHistorialComponent } from './componentes/explab-historial/explab-
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { EducacionHistorialComponent } from './componentes/educacion-historial/educacion-historial.component';
 import { SkillsComponent } from './componentes/skills/skills.component';
+import { Routes } from '@angular/router';
+import { DataServices } from './componentes/data.services';
+import { HttpClientModule } from'@angular/common/http';
+import { LoginService } from './componentes/login-ventana/login.service';
+import { CookieService } from 'ngx-cookie-service';
+
+const appRoutes: Routes=[
+{path: 'login', component:LoginVentanaComponent},
+]
 
 @NgModule({
   declarations: [
@@ -44,9 +55,12 @@ import { SkillsComponent } from './componentes/skills/skills.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+
   ],
-  providers: [],
+  providers: [DataServices, LoginService, CookieService],
   bootstrap: [AppComponent],
   entryComponents:[LoginVentanaComponent]
 })

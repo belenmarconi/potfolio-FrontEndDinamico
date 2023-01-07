@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginVentanaComponent } from '../login-ventana/login-ventana.component';
+import { LoginService } from '../login-ventana/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoginVentanaComponent } from '../login-ventana/login-ventana.component'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,15 @@ export class LoginComponent implements OnInit {
     }
 
     handleModalTodoFormClose(){
+       ;
+    }
 
+    estaLogueado(){
+      return this.loginService.estaLogueado();
+    }
+
+    logout(){
+      this.loginService.Logout();
     }
 
 }

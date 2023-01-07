@@ -1,3 +1,15 @@
+
+
+<div *ngIf="!estaLogueado()">
 <button id="botonLogin"  class="btn btn-primary me-2" (click)="llamaVentana()">
   Login
 </button>
+</div>
+
+<div *ngIf="estaLogueado()">
+<button id="botonLogout"   class="btn btn-primary me-2" (click)="logout()">
+  Logout
+</button>
+</div>
+
+
