@@ -1,13 +1,166 @@
+
 <div class="container" width="100%" style="margin-top:5% ;">
   <div class="row">
           <div class="col-5"> </div>
           <div class="col-7 linea-abajo linea-derecha">
-            <div style="text-align: right;"><h1>EDUCACION</h1>
-            </div>
+            <div style="text-align: right;">
+
+              <!-- Boton AGREGAR -->
+              <h1> <button type="button" class="btn btn-success btn-circle btn-lg" (click)="abreModal('add')"
+                data-bs-toggle="modal" data-bs-target="#agregaEducModal">
+              <a class="nav-link"><i class="fa-solid fa-plus"></i><span class="sr-only">(current)</span></a>
+              </button>  EDUCACION</h1>
 
             <div style="padding-left: 15%;">
-              <app-educacion-historial></app-educacion-historial>
+
+              <div class="row" *ngFor="let educacion of listaEduc" >
+                <div class="row">
+                  <!-- Botones EDICION y BORRAR -->
+                  <div style="text-align: left;" >
+                    <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',educacion)" data-bs-toggle="modal" data-bs-target="#actualizaEducModal">
+                      <i class="fa-solid fa-pencil"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-circle btn-lg" (click)="abreModal('borrar',educacion)" data-bs-toggle="modal" data-bs-target="#borraEducModal">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+
+                    <!-- Muestra de contenido -->
+                </div>
+                  <div class="col-11"><h2>{{educacion.tituloEduc}} </h2></div>
+                  <div class="col-1"><img src="{{educacion.imagenEduc}}" width="40"/></div>
+                </div>
+
+                <div>
+                  <p> {{educacion.institucionEduc}}, {{educacion.fechaEduc}} </p>
+                  {{educacion.estadoEduc}}
+                  </div>
+               </div>
             </div>
        </div>
   </div>
+</div>
+
+<!-- Modal AGREGAR -->
+<div class="modal fade" id="agregaEducModal" tabindex="-1" role="dialog" aria-labelledby="AgregaEducModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="agregaEducModalLabel">AÑADIR EDUCACION</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="agregaEducacion(addForm)" >
+          <div class="form-group">
+            <label for="tituloEduc" class="col-form-label">Titulo:</label>
+            <input type="text" ngModel name="tituloEduc" class="form-control" id="tituloEduc" placeholder="Inserte aquí el título/carrera" required>
+          </div>
+
+          <div class="form-group">
+            <label for="institucionEduc" class="col-form-label">Institución:</label>
+            <input type="text" ngModel name="institucionEduc" class="form-control" id="institucionEduc" placeholder="Inserte aquí la institució" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaEduc" class="col-form-label">Fecha:</label>
+            <input type="text" ngModel name="fechaEduc" class="form-control" id="fechaEduc" placeholder="Inserte aquí los años en los que se formó" required>
+          </div>
+
+          <div class="form-group">
+            <label for="estadoEduc" class="col-form-label">Estado:</label>
+            <input type="text" ngModel name="estadoEduc" class="form-control" id="estadoEduc" placeholder="Inserte aquí el estado de la formación (ej: completo, en progreso, etc)" required>
+          </div>
+
+          <div class="form-group">
+            <label for="imagenEduc" class="col-form-label">Imagen:</label>
+            <input type="text" ngModel name="imagenEduc" class="form-control" id="imagenEduc" placeholder="Inserte aquí link de la imagen requerida" required>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success" [disabled]="addForm.invalid" (click)="agregaEducacion(addForm)" > AGREGAR </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ACTUALIZAR -->
+<div class="modal fade" id="actualizaEducModal" tabindex="-1" role="dialog" aria-labelledby="ActualizaEducModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="actualizaEducModalLabel">EDITAR ENTRADA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+
+          <div class="form-group">
+            <label for="idEduc" class="col-form-label">ID:{{actualizaEduc?.idEduc}} </label>
+            <input type="hidden" ngModel="{{actualizaEduc?.idEduc}}" name="idEduc" class="form-control" id="idEduc"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="tituloEduc" class="col-form-label">Titulo:</label>
+            <input type="text" ngModel="{{actualizaEduc?.tituloEduc}}" name="tituloEduc" class="form-control" id="tituloEduc"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="institucionEduc" class="col-form-label">Institución:</label>
+            <input type="text" ngModel="{{actualizaEduc?.institucionEduc}}" name="institucionEduc" class="form-control" id="institucionEduc" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaEduc" class="col-form-label">Fecha:</label>
+            <input type="text" ngModel="{{actualizaEduc?.fechaEduc}}" name="fechaEduc" class="form-control" id="fechaEduc" required>
+          </div>
+
+          <div class="form-group">
+            <label for="estadoEduc" class="col-form-label">Estado:</label>
+            <input type="text" ngModel="{{actualizaEduc?.estadoEduc}}" name="estadoEduc" class="form-control" id="estadoEduc" placeholder="Inserte aquí el estado de la formación (ej: completo, en progreso, etc)" required>
+          </div>
+
+          <div class="form-group">
+            <label for="imagenEduc" class="col-form-label">Imagen:</label>
+            <input type="text" ngModel="{{actualizaEduc?.imagenEduc}}" name="imagenEduc" class="form-control" id="imagenEduc" placeholder="Inserte aquí link de la imagen requerida" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary"  (click)="actualizaEducacion(editForm.value)" > GUARDAR CAMBIOS </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal ELIMINAR -->
+<div class="modal fade" id="borraEducModal" tabindex="-1" role="dialog" aria-labelledby="borraEducModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="eliminaEducModalLabel">ELIMINAR ENTRADA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>Está seguro de que quiere eliminar la entrada {{borraEduc?.tituloEduc}} ?</h2>
+        <p>ESTA ACCIÓN NO ES REVERSIBLE</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger"  (click)="borraEducacion(borraEduc!.idEduc)" > ELIMINAR </button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

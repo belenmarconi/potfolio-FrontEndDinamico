@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
        ;
     }
 
+
+
     estaLogueado(){
       return this.loginService.estaLogueado();
     }

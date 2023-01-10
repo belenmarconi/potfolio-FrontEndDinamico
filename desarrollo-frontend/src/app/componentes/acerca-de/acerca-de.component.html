@@ -7,14 +7,20 @@
 
           <div style="padding-left: 15%;">
 
-            <app-acercade-texto></app-acercade-texto>
+            <p> {{usuario?.sobremi}} </p>
 
           </div>
      </div>
 
       <div class="col-6">
             <div style="transform: translateY(-70px); opacity: 1; text-align: right; ">
-              <app-acercade-imagen></app-acercade-imagen>
+              <img src="{{usuario?.foto}}" alt="belenmarconi" />
+            </div>
+            <div style="transform: translateY(-60px); opacity: 1; text-align: right; ">
+
+              <div><h2> {{usuario?.nombre}} {{usuario?.apellido}} </h2></div>
+              <div><h2> {{usuario?.titulo}} </h2></div>
+
             </div>
 
             <div style="margin-inline-end: 25%;transform: translateY(-70px);">

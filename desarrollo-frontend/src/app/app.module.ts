@@ -29,6 +29,7 @@ import { HttpClientModule } from'@angular/common/http';
 import { LoginService } from './componentes/login-ventana/login.service';
 import { CookieService } from 'ngx-cookie-service';
 
+
 const appRoutes: Routes=[
 {path: 'login', component:LoginVentanaComponent},
 ]
