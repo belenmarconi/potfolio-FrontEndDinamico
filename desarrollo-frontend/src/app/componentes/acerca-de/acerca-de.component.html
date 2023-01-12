@@ -2,7 +2,10 @@
   <div class="row">
 
      <div class="col-6">
-          <div style="padding-top: 10%;"><h1>ACERCA DE MI</h1>
+          <div style="padding-top: 10%;"><h1>ACERCA DE MI  <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',usuario)" data-bs-toggle="modal" data-bs-target="#actualizaUsuarioModal">
+            <i class="fa-solid fa-pencil"></i>
+          </button></h1>
+
           </div>
 
           <div style="padding-left: 15%;">
@@ -34,3 +37,56 @@
 
    </div>
 </div>
+
+<!-- Modal ACTUALIZAR -->
+<div class="modal fade" id="actualizaUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="ActualizaUsuarioModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="actualizaUsuarioModalLabel">EDITAR DATOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+
+          <div class="form-group">
+            <label for="id" class="col-form-label">ID:{{actualizaUser?.id}} </label>
+            <input type="hidden" ngModel="{{actualizaUser?.id}}" name="id" class="form-control" id="id"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="nombre" class="col-form-label">Nombre:</label>
+            <input type="text" ngModel="{{actualizaUser?.nombre}}" name="nombre" class="form-control" id="puestoUsuario"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido" class="col-form-label">Apellido:</label>
+            <input type="text" ngModel="{{actualizaUser?.apellido}}" name="apellido" class="form-control" id="apellido" required>
+          </div>
+
+          <div class="form-group">
+            <label for="titulo" class="col-form-label">Título:</label>
+            <input type="text" ngModel="{{actualizaUser?.titulo}}" name="titulo" class="form-control" id="titulo" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sobremi" class="col-form-label">Sobre mi:</label>
+            <input type="text" ngModel="{{actualizaUser?.sobremi}}" name="sobremi" class="form-control" id="sobremi"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="foto" class="col-form-label">Foto:</label>
+            <input type="text" ngModel="{{actualizaUser?.foto}}" name="foto" class="form-control" id="foto"  required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary"  (click)="actualizaUsuario(editForm.value)" > GUARDAR CAMBIOS </button>
+      </div>
+    </div>
+  </div>
+</div>
+

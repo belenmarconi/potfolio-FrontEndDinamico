@@ -1,12 +1,162 @@
 <div class="container" width="100%">
   <div class="row">
       <div class="col-7 linea-abajo linea-izquierda">
-            <div><h1>EXPERIENCIA LABORAL</h1>
-            </div>
+            <div><!-- Boton AGREGAR -->
+              <h1> <button type="button" class="btn btn-success btn-circle btn-lg" (click)="abreModal('add')"
+                data-bs-toggle="modal" data-bs-target="#agregaExpModal">
+              <a class="nav-link"><i class="fa-solid fa-plus"></i><span class="sr-only">(current)</span></a>
+              </button>  EXPERIENCIA LABORAL</h1>
 
-            <div style="padding-left: 15%;">
-              <app-explab-historial></app-explab-historial>
+            <div >
+
+              <div class="row" *ngFor="let experiencia of listaExp" style="margin-bottom:5% ;" >
+                <div class="row align-items-center">
+                  <!-- Botones EDICION y BORRAR -->
+                  <div style="text-align: right;" >
+                    <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',experiencia)" data-bs-toggle="modal" data-bs-target="#actualizaExpModal">
+                      <i class="fa-solid fa-pencil"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-circle btn-lg" (click)="abreModal('borrar',experiencia)" data-bs-toggle="modal" data-bs-target="#borraExpModal">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+
+                    <!-- Muestra de contenido -->
+                </div>
+                <div class="col-1"><img src="{{experiencia.imagenExp}}" width="40"/></div>
+                  <div class="col-11"><h2>{{experiencia.puestoExp}} </h2></div>
+                </div>
+
+                <div>
+                  <p> {{experiencia.empresaExp}}, {{experiencia.fechaExp}} </p>
+                  {{experiencia.detalleExp}}
+                  </div>
+               </div>
             </div>
        </div>
   </div>
+</div>
+
+<!-- Modal AGREGAR -->
+<div class="modal fade" id="agregaExpModal" tabindex="-1" role="dialog" aria-labelledby="AgregaExpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="agregaExpModalLabel">AÑADIR EXPERIENCIA LABORAL</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="agregaExperiencia(addForm)" >
+          <div class="form-group">
+            <label for="puestoExp" class="col-form-label">Puesto:</label>
+            <input type="text" ngModel name="puestoExp" class="form-control" id="puestoExp" placeholder="Inserte aquí el puesto ocupado" required>
+          </div>
+
+          <div class="form-group">
+            <label for="empresaExp" class="col-form-label">Empresa:</label>
+            <input type="text" ngModel name="empresaExp" class="form-control" id="empresaExp" placeholder="Inserte aquí la Empresa" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaExp" class="col-form-label">Fecha:</label>
+            <input type="text" ngModel name="fechaExp" class="form-control" id="fechaExp" placeholder="Inserte aquí los años en los que trabajó" required>
+          </div>
+
+          <div class="form-group">
+            <label for="detalleExp" class="col-form-label">Detalle:</label>
+            <input type="text" ngModel name="detalleExp" class="form-control" id="detalleExp" placeholder="Inserte aquí las tareas realizadas" required>
+          </div>
+
+          <div class="form-group">
+            <label for="imagenExp" class="col-form-label">Imagen:</label>
+            <input type="text" ngModel name="imagenExp" class="form-control" id="imagenExp" placeholder="Inserte aquí link de la imagen requerida" required>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success" [disabled]="addForm.invalid" (click)="agregaExperiencia(addForm)" > AGREGAR </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ACTUALIZAR -->
+<div class="modal fade" id="actualizaExpModal" tabindex="-1" role="dialog" aria-labelledby="ActualizaExpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="actualizaExpModalLabel">EDITAR ENTRADA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+
+          <div class="form-group">
+            <label for="idExp" class="col-form-label">ID:{{actualizaExp?.idExp}} </label>
+            <input type="hidden" ngModel="{{actualizaExp?.idExp}}" name="idExp" class="form-control" id="idExp"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="puestoExp" class="col-form-label">Puesto:</label>
+            <input type="text" ngModel="{{actualizaExp?.puestoExp}}" name="puestoExp" class="form-control" id="puestoExp"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="empresaExp" class="col-form-label">Empresa:</label>
+            <input type="text" ngModel="{{actualizaExp?.empresaExp}}" name="empresaExp" class="form-control" id="empresaExp" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fechaExp" class="col-form-label">Fecha:</label>
+            <input type="text" ngModel="{{actualizaExp?.fechaExp}}" name="fechaExp" class="form-control" id="fechaExp" required>
+          </div>
+
+          <div class="form-group">
+            <label for="detalleExp" class="col-form-label">Detalle:</label>
+            <input type="text" ngModel="{{actualizaExp?.detalleExp}}" name="detalleExp" class="form-control" id="detalleExp" placeholder="Inserte aquí el estado de la formación (ej: completo, en progreso, etc)" required>
+          </div>
+
+          <div class="form-group">
+            <label for="imagenExp" class="col-form-label">Imagen:</label>
+            <input type="text" ngModel="{{actualizaExp?.imagenExp}}" name="imagenExp" class="form-control" id="imagenExp" placeholder="Inserte aquí link de la imagen requerida" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary"  (click)="actualizaExperiencia(editForm.value)" > GUARDAR CAMBIOS </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal ELIMINAR -->
+<div class="modal fade" id="borraExpModal" tabindex="-1" role="dialog" aria-labelledby="borraExpModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="eliminaExpModalLabel">ELIMINAR ENTRADA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>Está seguro de que quiere eliminar la entrada {{borraExp?.puestoExp}} ?</h2>
+        <p>ESTA ACCIÓN NO ES REVERSIBLE</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger"  (click)="borraExperiencia(borraExp!.idExp)" > ELIMINAR </button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

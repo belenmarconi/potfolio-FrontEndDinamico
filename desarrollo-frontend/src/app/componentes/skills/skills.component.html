@@ -1,31 +1,146 @@
 <div class="container" width="100%" style="margin-top:5% ;">
   <div class="row">
       <div class="col-7 linea-abajo linea-izquierda">
-            <div><h1>SKILLS</h1>
+            <div><h1>SKILLS <button type="button" class="btn btn-success btn-circle btn-lg" (click)="abreModal('add')"
+              data-bs-toggle="modal" data-bs-target="#agregaSkillModal">
+            <a class="nav-link"><i class="fa-solid fa-plus"></i><span class="sr-only">(current)</span></a>
+            </button></h1>
             </div>
 
-            <div style="padding-left: 15%;">
-              <div class="progress" style="margin-bottom: 2%; height:30px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="80" aria-valuemax="100"></div>
-                <p>FRONTEND</p>
-              </div>
-              <div class="progress" style="margin-bottom: 2%; height:30px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                <p>BACKEND</p>
-              </div>
-              <div class="progress" style="margin-bottom: 2%; height:30px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                <p> PROACTIVIDAD </p>
-              </div>
-              <div class="progress" style="margin-bottom: 2%; height:30px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                <p>INGLES</p>
-              </div>
-              <div class="progress" style="margin-bottom: 2%; height:30px;">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                <p>TRABAJO EN EQUIPO</p>
+
+              <div class="container" style="margin-top:10% ; margin-bottom:5% ;"  >
+                  <div class="row" *ngFor="let skills of listaSkill">
+                    <!-- Botones EDICION y BORRAR -->
+                  <div style="text-align: left;" >
+                    <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',skills)" data-bs-toggle="modal" data-bs-target="#actualizaSkillModal">
+                      <i class="fa-solid fa-pencil"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-danger btn-circle btn-lg" (click)="abreModal('borrar',skills)" data-bs-toggle="modal" data-bs-target="#borraSkillModal">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+
+                  <div class="col-md-3 ">
+                      <div class="progress blue">
+                          <span class="progress-left">
+                            <span class="progress-bar"></span>
+                          </span>
+                          <span class="progress-right">
+                              <span class="progress-bar"></span>
+                          </span>
+                          <div class="progress-value">{{skills.porcentajeSkill}} %</div>
+                      </div>
+                      <h2 style="margin-left:30% ; margin-top:10% ;">{{skills.nombreSkill}} </h2>
+                  </div>
+
+               </div>
+
+
+              <div>
+
+
+
               </div>
             </div>
+               <div>
        </div>
   </div>
 </div>
+
+<!-- Modal AGREGAR -->
+<div class="modal fade" id="agregaSkillModal" tabindex="-1" role="dialog" aria-labelledby="AgregaSkillModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="agregaSkillModalLabel">AÑADIR SKILLS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="agregaSkills(addForm)" >
+          <div class="form-group">
+            <label for="nombreSkill" class="col-form-label">Titulo:</label>
+            <input type="text" ngModel name="nombreSkill" class="form-control" id="nombreSkill" placeholder="Inserte aquí la nueva skill" required>
+          </div>
+
+          <div class="form-group">
+            <label for="porcentajeSkill" class="col-form-label">Institución:</label>
+            <input type="text" ngModel name="porcentajeSkill" class="form-control" id="porcentajeSkill" placeholder="Inserte aquí el porcentaje EN NUMEROS" required>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-success" [disabled]="addForm.invalid" (click)="agregaSkills(addForm)" > AGREGAR </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ACTUALIZAR -->
+<div class="modal fade" id="actualizaSkillModal" tabindex="-1" role="dialog" aria-labelledby="ActualizaSkillModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="actualizaSkillModalLabel">EDITAR SKILL</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+
+          <div class="form-group">
+            <label for="idSkill" class="col-form-label">ID:{{actualizaSkill?.idSkill}} </label>
+            <input type="hidden" ngModel="{{actualizaSkill?.idSkill}}" name="idSkill" class="form-control" id="idSkill"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="nombreSkill" class="col-form-label">Titulo:</label>
+            <input type="text" ngModel="{{actualizaSkill?.nombreSkill}}" name="nombreSkill" class="form-control" id="nombreSkill"  required>
+          </div>
+
+          <div class="form-group">
+            <label for="porcentajeSkill" class="col-form-label">Institución:</label>
+            <input type="text" ngModel="{{actualizaSkill?.porcentajeSkill}}" name="porcentajeSkill" class="form-control" id="porcentajeSkill" required>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary"  (click)="actualizaSkills(editForm.value)" > GUARDAR CAMBIOS </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal ELIMINAR -->
+<div class="modal fade" id="borraSkillModal" tabindex="-1" role="dialog" aria-labelledby="borraSkillModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="eliminaSkillModalLabel">ELIMINAR ENTRADA</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>Está seguro de que quiere eliminar la entrada {{borraSkill?.nombreSkill}} ?</h2>
+        <p>ESTA ACCIÓN NO ES REVERSIBLE</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger"  (click)="borraSkills(borraSkill!.idSkill)" > ELIMINAR </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

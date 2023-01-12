@@ -11,10 +11,10 @@
               <a class="nav-link"><i class="fa-solid fa-plus"></i><span class="sr-only">(current)</span></a>
               </button>  EDUCACION</h1>
 
-            <div style="padding-left: 15%;">
+            <div style="padding-left: 15%; ">
 
-              <div class="row" *ngFor="let educacion of listaEduc" >
-                <div class="row">
+              <div class="row" *ngFor="let educacion of listaEduc" style="margin-bottom: 5%;">
+                <div class="row align-items-center">
                   <!-- Botones EDICION y BORRAR -->
                   <div style="text-align: left;" >
                     <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',educacion)" data-bs-toggle="modal" data-bs-target="#actualizaEducModal">

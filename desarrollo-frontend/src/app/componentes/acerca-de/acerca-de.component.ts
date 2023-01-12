@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AcercadeServicioService } from './acercade-servicio.service';
 import { Usuario } from './usuario-model';
 
@@ -11,7 +12,7 @@ import { Usuario } from './usuario-model';
 export class AcercaDeComponent implements OnInit {
 
   public usuario:Usuario | undefined;
-  public editUsuario:Usuario | undefined
+  public actualizaUser:Usuario | undefined
 
   constructor(private acercadeservice : AcercadeServicioService) { }
 
@@ -31,4 +32,31 @@ export class AcercaDeComponent implements OnInit {
 
   }
 
+  public actualizaUsuario(editForm:Usuario){
+    this.actualizaUser=editForm;
+    document.getElementById('actualizarUsuarioForm')?.click();
+    this.acercadeservice.actualizaUsuario(editForm).subscribe({
+      next:(response:Usuario) =>{
+        console.log(response);
+        this.getUsuario();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    })
+  }
+
+
+  public abreModal(mode:string, usuario?:Usuario):void{
+    const container=document.getElementById('main-container');
+    const button=document.createElement('button');
+    button.style.display='none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode==='actualizar'){
+      this.actualizaUser=usuario;
+      button.setAttribute('data-bs-target', '#actualizaUsuarioModal')
+    }
+    container?.appendChild(button);
+    button.click();
+  }
 }

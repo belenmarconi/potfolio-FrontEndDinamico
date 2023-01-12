@@ -17,6 +17,6 @@ export class AcercadeServicioService {
   }
 
   public actualizaUsuario(usuario:Usuario):Observable<Usuario>{
-    return this.http.put<Usuario>(`${this.apiServerUrl}/actualiza`, usuario);
+    return this.http.put<Usuario>(`${this.apiServerUrl}/usuario/actualiza`, usuario);
   }
 }
