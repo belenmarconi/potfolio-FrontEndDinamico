@@ -36,6 +36,50 @@ width: 100%;
 position: relative;
 }
 
+#fondoacerca {
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 500px;
+  background-image: url("./assets/fondoola.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#fondoexplaboral {
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 500px;
+  background-image: url("./assets/explaboralback.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#fondoeducacion {
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 500px;
+  background-image: url("./assets/educacionback.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#fondoskills {
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 500px;
+  background-image: url("./assets/skillsback.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#fondoproyectos {
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 500px;
+  background-image: url("./assets/404back.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 /** ESTILOS BOTON CIRCULAR**/
 .btn-circle.btn-xl {
   width: 70px;
@@ -191,3 +235,4 @@ position: relative;
 @media only screen and (max-width: 990px){
   .progress{ margin-bottom: 20px; }
 }
+

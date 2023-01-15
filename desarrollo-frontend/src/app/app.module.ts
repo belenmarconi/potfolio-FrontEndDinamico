@@ -28,6 +28,7 @@ import { DataServices } from './componentes/data.services';
 import { HttpClientModule } from'@angular/common/http';
 import { LoginService } from './componentes/login-ventana/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 
 
 const appRoutes: Routes=[
@@ -53,7 +54,8 @@ const appRoutes: Routes=[
 
     EducacionComponent,
 
-    SkillsComponent
+    SkillsComponent,
+      ProyectosComponent
   ],
   imports: [
     BrowserModule,
