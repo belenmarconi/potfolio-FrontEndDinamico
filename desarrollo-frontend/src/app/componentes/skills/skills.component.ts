@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LoginService } from '../login-ventana/login.service';
 import { Skills } from './skills-model';
 import { SkillsServicioService } from './skills-servicio.service';
 
@@ -14,7 +15,8 @@ export class SkillsComponent implements OnInit {
   public actualizaSkill:Skills | undefined
   public borraSkill:Skills | undefined
 
-  constructor(private skillsServicio:SkillsServicioService) { }
+  constructor(private skillsServicio:SkillsServicioService,
+    private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.getSkills();
@@ -90,6 +92,9 @@ export class SkillsComponent implements OnInit {
     button.click();
   }
 
+  estaLogueado(){
+    return this.loginService.estaLogueado();
+  }
 
 
 }

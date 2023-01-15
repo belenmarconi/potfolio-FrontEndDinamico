@@ -1,7 +1,7 @@
 
 
 <div *ngIf="!estaLogueado()">
-<button id="botonLogin"  class="btn btn-primary me-2" (click)="llamaVentana()">
+<button id="botonLogin" type="button" class="btn btn-primary me-2" (click)="llamaVentana()">
   Login
 </button>
 </div>
@@ -13,3 +13,42 @@
 </div>
 
 
+
+
+ <!--
+<div class="modal fade"  id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="loginModalLabel">Accede a tu cuenta</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #FormularioLogin="ngForm" (ngSubmit)="login(FormularioLogin)">
+          //INGRESO USUARIO
+          <div class="form-group ">
+            <input  class="form-control" name="email" type="email" placeholder="Introduzca email" ngModel />
+            <label class="form-label" for="Usuario">Usuario</label>
+          </div>
+
+          //INGRESO PASSWORD
+          <div class="form-group ">
+            <input  class="form-control" name="password" type="password" placeholder="Introduzca contraseña" ngModel />
+            <label class="form-label" for="Password">Contraseña</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mb-4" style="background:purple">Iniciar sesión</button>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+-->

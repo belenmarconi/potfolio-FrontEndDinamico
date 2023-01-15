@@ -26,7 +26,6 @@ export class LoginService{
           token=>{
             this.token=token;
             this.cookieService.set("token",this.token);
-            this.router.navigate(['/']);
 
           }
         )
@@ -55,5 +54,7 @@ Logout(){
   })
 
 }
+
+
 
 }

@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LoginService } from '../login-ventana/login.service';
 import { AcercadeServicioService } from './acercade-servicio.service';
 import { Usuario } from './usuario-model';
 
@@ -14,7 +15,9 @@ export class AcercaDeComponent implements OnInit {
   public usuario:Usuario | undefined;
   public actualizaUser:Usuario | undefined
 
-  constructor(private acercadeservice : AcercadeServicioService) { }
+  constructor(
+    private acercadeservice : AcercadeServicioService,
+    private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.getUsuario();
@@ -59,4 +62,9 @@ export class AcercaDeComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
+
+  estaLogueado(){
+    return this.loginService.estaLogueado();
+  }
+
 }

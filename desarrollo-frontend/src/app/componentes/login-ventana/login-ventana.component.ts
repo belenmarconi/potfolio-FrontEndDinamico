@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from './login.service';
 
 
@@ -10,22 +11,25 @@ import { LoginService } from './login.service';
 })
 export class LoginVentanaComponent implements OnInit {
 
+  todoForm: FormGroup | undefined;
+  formBuilder: any;
 
-
-  constructor(private LoginService:LoginService) { }
+  constructor(private LoginService:LoginService, private modalService: NgbModal, public activeModal: NgbActiveModal) { }
 
 
 
   ngOnInit(): void {
+
   }
 
   login(form:NgForm){
     const email=form.value.email;
     const password=form.value.password;
-
     this.LoginService.login(email, password);
-
+    this.activeModal.close()
 
   }
+
+
 
 }

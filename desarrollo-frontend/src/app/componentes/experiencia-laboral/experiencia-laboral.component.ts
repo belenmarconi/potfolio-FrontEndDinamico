@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LoginService } from '../login-ventana/login.service';
 import { Experiencia } from './experiencia-model';
 import { ExplaboralServicioService } from './explaboral-servicio.service';
 
@@ -14,7 +15,8 @@ export class ExperienciaLaboralComponent implements OnInit {
   public actualizaExp:Experiencia | undefined
   public borraExp:Experiencia | undefined
 
-  constructor(private experienciaServicio:ExplaboralServicioService) { }
+  constructor(private experienciaServicio:ExplaboralServicioService,
+    private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.getExperiencia();
@@ -88,5 +90,9 @@ export class ExperienciaLaboralComponent implements OnInit {
     }
     container?.appendChild(button);
     button.click();
+  }
+
+  estaLogueado(){
+    return this.loginService.estaLogueado();
   }
 }

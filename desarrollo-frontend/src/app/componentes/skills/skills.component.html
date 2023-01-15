@@ -1,24 +1,24 @@
 <div class="container" width="100%" style="margin-top:5% ;">
   <div class="row">
       <div class="col-7 linea-abajo linea-izquierda">
-            <div><h1>SKILLS <button type="button" class="btn btn-success btn-circle btn-lg" (click)="abreModal('add')"
+            <div><h1>SKILLS <span *ngIf="estaLogueado()"><button type="button" class="btn btn-success btn-circle btn-lg" (click)="abreModal('add')"
               data-bs-toggle="modal" data-bs-target="#agregaSkillModal">
             <a class="nav-link"><i class="fa-solid fa-plus"></i><span class="sr-only">(current)</span></a>
-            </button></h1>
+            </button></span></h1>
             </div>
 
 
               <div class="container" style="margin-top:10% ; margin-bottom:5% ;"  >
-                  <div class="row" *ngFor="let skills of listaSkill">
+                  <div class="row" *ngFor="let skills of listaSkill" style = "float: left; margin-left: 2%;">
                     <!-- Botones EDICION y BORRAR -->
                   <div style="text-align: left;" >
-                    <button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',skills)" data-bs-toggle="modal" data-bs-target="#actualizaSkillModal">
+                    <span *ngIf="estaLogueado()"><button type="button" class="btn btn-primary btn-circle btn-lg" (click)="abreModal('actualizar',skills)" data-bs-toggle="modal" data-bs-target="#actualizaSkillModal">
                       <i class="fa-solid fa-pencil"></i>
                     </button>
 
                     <button type="button" class="btn btn-danger btn-circle btn-lg" (click)="abreModal('borrar',skills)" data-bs-toggle="modal" data-bs-target="#borraSkillModal">
                       <i class="fa-solid fa-times"></i>
-                    </button>
+                    </button></span>
 
                   <div class="col-md-3 ">
                       <div class="progress blue">
@@ -143,4 +143,3 @@
   </div>
 </div>
 </div>
-

@@ -1,6 +1,12 @@
 
-    <div class="modal-header" id="modallogin">
-                <h1 class="modal-title">Accede a tu cuenta</h1>
+
+
+    <div class="modal-fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+    <div class="modal-header" id="modallogin" role="dialog" aria-hidden="true">
+            <h1 class="modal-title">Accede a tu cuenta</h1>
+
           </div>
           <div class="modal-body">
               <form #FormularioLogin="ngForm" (ngSubmit)="login(FormularioLogin)">
@@ -16,11 +22,21 @@
                     <label class="form-label" for="Password">Contraseña</label>
                   </div>
 
-
-                  <!-- BOTON INICIO DE SESION -->
                   <button type="submit" class="btn btn-primary btn-block mb-4" style="background:purple" >
-                      Iniciar sesión</button>
+                    Iniciar sesión</button>
+
 
                 </form>
           </div>
+
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary btn-block mb-4" (click)="activeModal.close('Close click')" >Cerrar</button>
+                  </div>
+    </div>
+      </div>
+    </div>
+
+
+
+
 

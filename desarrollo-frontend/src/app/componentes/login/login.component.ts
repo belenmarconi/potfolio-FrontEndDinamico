@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginVentanaComponent } from '../login-ventana/login-ventana.component';
 import { LoginService } from '../login-ventana/login.service';
@@ -26,7 +27,12 @@ export class LoginComponent implements OnInit {
        ;
     }
 
+    login(form:NgForm){
+      const email=form.value.email;
+      const password=form.value.password;
 
+      this.loginService.login(email, password);
+    }
 
     estaLogueado(){
       return this.loginService.estaLogueado();

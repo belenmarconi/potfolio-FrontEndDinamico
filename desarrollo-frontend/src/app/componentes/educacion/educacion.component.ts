@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from '../login-ventana/login.service';
 import { Educacion } from './educacion-model';
 import { EducacionServicioService } from './educacion-servicio.service';
 
@@ -15,7 +17,9 @@ export class EducacionComponent implements OnInit {
   public actualizaEduc:Educacion | undefined
   public borraEduc:Educacion | undefined
 
-  constructor(private educacionServicio:EducacionServicioService) { }
+  constructor(private educacionServicio:EducacionServicioService,
+    private loginService:LoginService,
+    public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
     this.getEducacion();
@@ -45,6 +49,7 @@ export class EducacionComponent implements OnInit {
         addForm.reset();
       }
     })
+
   }
 
   public actualizaEducacion(editForm:Educacion){
@@ -89,5 +94,10 @@ export class EducacionComponent implements OnInit {
     }
     container?.appendChild(button);
     button.click();
+
+  }
+
+  estaLogueado(){
+    return this.loginService.estaLogueado();
   }
 }

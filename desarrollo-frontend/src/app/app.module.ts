@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
 
@@ -32,6 +32,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 const appRoutes: Routes=[
 {path: 'login', component:LoginVentanaComponent},
+{path: 'home', component:AppComponent},
 ]
 
 @NgModule({
@@ -61,7 +62,7 @@ const appRoutes: Routes=[
     FormsModule,
 
   ],
-  providers: [DataServices, LoginService, CookieService],
+  providers: [DataServices, LoginService, CookieService, NgbActiveModal],
   bootstrap: [AppComponent],
   entryComponents:[LoginVentanaComponent]
 })
